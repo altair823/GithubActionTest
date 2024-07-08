@@ -1,7 +1,7 @@
 name: Build gradle project
 
 on:
-  workflow_call:
+  - workflow_call
 
 jobs:
   Build gradle project:
