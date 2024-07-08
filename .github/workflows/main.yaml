@@ -4,11 +4,14 @@ on:
       - main
 
 jobs:
-  build:
+  checkout:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: build with reusable action
-        uses: ./.github/workflows/build.yml
-      - name: post-job
-        run: echo "post-job"
+  build:
+    uses: ./.github/workflows/build.yml
+    needs: checkout
+  end:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Build completed"
