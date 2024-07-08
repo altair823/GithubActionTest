@@ -16,4 +16,4 @@ jobs:
   end:
     runs-on: ubuntu-latest
     steps:
-      - run: ls ${{ github.workspace }}
+      - run: ls ${{ github.workspace }} -al
