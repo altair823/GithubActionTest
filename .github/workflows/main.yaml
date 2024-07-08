@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: build with reusable action
-        uses: ./.github/workflows/build.yaml
+        uses: ./.github/workflows/build.yml
       - name: post-job
         run: echo "post-job"
