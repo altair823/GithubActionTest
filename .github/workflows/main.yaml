@@ -12,6 +12,7 @@ jobs:
     uses: ./.github/workflows/build.yml
     needs: checkout
   end:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - run: echo "Build completed"
