@@ -1,0 +1,13 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build with reusable action
+        uses: ./github/workflows/build.yaml
+      - name: post-job
+        run: echo "post-job"
