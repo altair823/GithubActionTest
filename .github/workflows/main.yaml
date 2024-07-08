@@ -7,6 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: build with reusable action
         uses: ./.github/workflows/build.yaml
       - name: post-job
