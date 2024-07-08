@@ -17,4 +17,4 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Build completed"
+      - run: echo ${{ github.workspace }}
