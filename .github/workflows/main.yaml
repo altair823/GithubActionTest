@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: build with reusable action
-        uses: altair823/GithubActionTest/.github/workflows/build.yaml
+        uses: ./.github/workflows/build.yaml
       - name: post-job
         run: echo "post-job"
