@@ -2,7 +2,7 @@ on:
   - workflow_call
 
 jobs:
-  Build gradle project:
+  build-gradle:
     runs-on: ubuntu-latest
     steps:
       - name: Set up JDK 21
