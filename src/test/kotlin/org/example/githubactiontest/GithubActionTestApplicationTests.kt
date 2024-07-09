@@ -12,4 +12,5 @@ class GithubActionTestApplicationTests {
 		assert(test == 1)
 	}
 
+
 }
