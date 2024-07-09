@@ -33,7 +33,7 @@ jobs:
       - name: Rename artifact
         run: mv build/libs/*.jar build/libs/${{ inputs.artifact-name }}.jar
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: binchae-be
           path: build/libs/${{ inputs.artifact-name }}.jar

@@ -1,0 +1,18 @@
+on:
+  push:
+    branches:
+      - feature/*
+
+jobs:
+  test:
+    uses: ./.github/workflows/test-gradle.yml
+  end:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print test result
+        uses: actions/download-artifact@v4
+        with:
+          name: test-result
+          path: ./test
+      - run: cat ./test/test-result.txt

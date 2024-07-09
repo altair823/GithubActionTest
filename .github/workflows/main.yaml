@@ -16,13 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print test result
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: test-result
           path: ./test
       - run: cat ./test/test-result.txt
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: binchae-be
           path: ./artifacts
