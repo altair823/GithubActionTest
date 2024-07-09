@@ -12,5 +12,15 @@ class GithubActionTestApplicationTests {
 		assert(test == 1)
 	}
 
+	@Test
+	fun test2() {
+		val test = 2
+		assert(test == 2)
+	}
 
+	@Test
+	fun test3() {
+		val test = 3
+		assert(test == 3)
+	}
 }
