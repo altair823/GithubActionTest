@@ -1,5 +1,9 @@
 on:
   workflow_call:
+    inputs:
+      artifact-name:
+        required: true
+        type: string
 
 jobs:
   build-gradle:
@@ -15,8 +19,10 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle Wrapper
         run: ./gradlew build
+      - name: Rename artifact
+        run: mv build/libs/*.jar build/libs/${{ inputs.artifact-name }}.jar
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: binchae-be
-          path: build/libs/*.jar
+          path: build/libs/${{ inputs.artifact-name }}.jar
