@@ -4,13 +4,11 @@ on:
       - main
 
 jobs:
-  checkout:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: pwd && ls -al
+  test:
+    uses: ./.github/workflows/test-gradle.yml
+    needs: checkout
   build:
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/build-gradle-artifact.yml
     with:
       artifact-name: binchae-be
     needs: checkout
@@ -18,9 +16,17 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Print test result
+        uses: actions/download-artifact@v2
+        with:
+          name: test-result
+          path: ./test
+      - run: cat ./test/test-result.txt
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
           name: binchae-be
           path: ./artifacts
       - run: ls -al ./artifacts
+      - name: Run application
+        run: java -jar ./artifacts/binchae-be.jar

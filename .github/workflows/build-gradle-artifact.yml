@@ -18,7 +18,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle Wrapper
-        run: ./gradlew build
+        run: ./gradlew build -x test
       - name: Rename artifact
         run: mv build/libs/*.jar build/libs/${{ inputs.artifact-name }}.jar
       - name: Upload artifact
