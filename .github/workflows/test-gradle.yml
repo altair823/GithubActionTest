@@ -1,11 +1,5 @@
 on:
   workflow_call:
-    inputs:
-      clean_build:
-        description: 'Perform a clean build (true/false)'
-        required: false
-        default: 'false'
-        type: string
 
 jobs:
   test-gradle:
@@ -19,14 +13,6 @@ jobs:
           distribution: 'temurin'
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Determine cache key
-        id: cache-key
-        run: |
-          if [[ "${{ inputs.clean_build }}" == "true" ]]; then
-          echo "CACHE_KEY=clean-${{ runner.os }}-gradle-${{ github.sha }}" >> $GITHUB_ENV
-          else
-          echo "CACHE_KEY=${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}" >> $GITHUB_ENV
-          fi
 
       - name: Cache Gradle dependencies
         uses: actions/cache@v2
@@ -34,7 +20,7 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ env.CACHE_KEY }}
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
 
