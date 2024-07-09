@@ -10,7 +10,7 @@ jobs:
     uses: ./.github/workflows/build-gradle-artifact.yml
     with:
       artifact-name: binchae-be
-    needs: checkout
+    needs: test
   end:
     needs: build
     runs-on: ubuntu-latest
