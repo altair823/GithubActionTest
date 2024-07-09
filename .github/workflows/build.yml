@@ -15,5 +15,8 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle Wrapper
         run: ./gradlew build
-      - name: Move build artifacts to workspace
-        run: mv build/libs/*.jar ${{ github.workspace }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: binchae-be
+          path: build/libs/*.jar

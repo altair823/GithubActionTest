@@ -16,4 +16,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - run: ls ${{ github.workspace }} -al
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: binchae-be
+          path: ./artifacts
+      - run: ls -al ./artifacts
