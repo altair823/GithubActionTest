@@ -33,12 +33,3 @@ jobs:
           name: binchae-be
           path: ./artifacts
       - run: ls -al ./artifacts
-
-      - name: Set up JDK 21
-        uses: actions/setup-java@v4
-        with:
-          java-version: '21'
-          distribution: 'temurin'
-
-      - name: Run application
-        run: java -jar ./artifacts/binchae-be.jar
