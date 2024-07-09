@@ -1,10 +1,11 @@
 on:
   workflow_call:
-    clean_build:
-      description: 'Perform a clean build (true/false)'
-      required: false
-      default: 'false'
-      type: string
+    inputs:
+      clean_build:
+        description: 'Perform a clean build (true/false)'
+        required: false
+        default: 'false'
+        type: string
 
 jobs:
   test-gradle:
