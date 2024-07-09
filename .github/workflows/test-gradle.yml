@@ -24,13 +24,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Cache build output
-        uses: actions/cache@v2
-        with:
-          path: build
-          key: ${{ env.CACHE_KEY }}-build
-          restore-keys: |
-            ${{ runner.os }}-gradle-build-
       - name: Test with Gradle Wrapper
         run: ./gradlew test > test-result.txt
       - name: Upload test result
