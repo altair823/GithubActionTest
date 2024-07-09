@@ -6,7 +6,6 @@ on:
 jobs:
   test:
     uses: ./.github/workflows/test-gradle.yml
-    needs: checkout
   build:
     uses: ./.github/workflows/build-gradle-artifact.yml
     with:
