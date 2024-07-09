@@ -11,8 +11,6 @@ jobs:
       - run: pwd && ls -al
   build:
     uses: ./.github/workflows/build.yml
-    with:
-      gradle-path: ${{ github.workspace }}
     needs: checkout
   end:
     runs-on: ubuntu-latest
