@@ -4,6 +4,9 @@ on:
       artifact-name:
         required: true
         type: string
+      identifier:
+        required: true
+        type: string
     secrets:
       AWS_S3_BUCKET_NAME:
         required: true
@@ -33,5 +36,5 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Upload artifact to S3
-        run: aws s3 cp ./artifacts/${{ inputs.artifact-name }}.jar s3://${{ secrets.AWS_S3_BUCKET_NAME }}/${{ inputs.artifact-name }}.jar
+        run: aws s3 cp ./artifacts/${{ inputs.artifact-name }}.jar s3://${{ secrets.AWS_S3_BUCKET_NAME }}/${{ inputs.artifact-name }}-${{ inputs.identifier }}.jar
 
