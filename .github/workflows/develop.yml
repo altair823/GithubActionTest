@@ -9,13 +9,13 @@ jobs:
   build:
     uses: ./.github/workflows/build-gradle-artifact.yml
     with:
-      artifact-name: binchae-be
+      artifact-name: github-actions-demo
     needs: test
-  end:
+  print-test-result:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Print test result
+      - name: Download test result
         uses: actions/download-artifact@v4
         with:
           name: test-result
@@ -27,3 +27,13 @@ jobs:
           name: binchae-be
           path: ./artifacts
       - run: ls -al ./artifacts
+  upload-s3:
+    needs: build
+    uses: ./.github/workflows/upload-s3.yml
+    with:
+      artifact-name: github-actions-demo
+      AWS_CODE_DEPLOY_S3_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET_NAME }}
+    secrets:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
