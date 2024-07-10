@@ -4,10 +4,9 @@ on:
       artifact-name:
         required: true
         type: string
+    secrets:
       AWS_S3_BUCKET_NAME:
         required: true
-        type: string
-    secrets:
       AWS_ACCESS_KEY_ID:
         required: true
       AWS_SECRET_ACCESS_KEY:
@@ -36,5 +35,5 @@ jobs:
       - name: Upload artifact to S3
         uses: actions/aws/cli@v2
         with:
-          args: s3 cp ./artifacts/${{ inputs.artifact-name }}.jar s3://${{ inputs.AWS_S3_BUCKET_NAME }}/${{ inputs.artifact-name }}.jar
+          args: s3 cp ./artifacts/${{ inputs.artifact-name }}.jar s3://${{ secrets.AWS_S3_BUCKET_NAME }}/${{ inputs.artifact-name }}.jar
 
