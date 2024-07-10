@@ -36,5 +36,5 @@ jobs:
       - name: Upload artifact to S3
         uses: actions/aws/cli@v2
         with:
-          args: s3 cp ./artifacts/${{ inputs.artifact-name }}.jar s3://${{ inputs.AWS_CODE_DEPLOY_S3_BUCKET_NAME }}/${{ inputs.artifact-name }}.jar
+          args: s3 cp ./artifacts/${{ inputs.artifact-name }}.jar s3://${{ inputs.AWS_S3_BUCKET_NAME }}/${{ inputs.artifact-name }}.jar
 
