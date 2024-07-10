@@ -9,13 +9,13 @@ jobs:
   build:
     uses: ./.github/workflows/build-gradle-artifact.yml
     with:
-      artifact-name: binchae-be
+      artifact-name: github-actions-demo
     needs: test
   print-test-result:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Print test result
+      - name: Download test result
         uses: actions/download-artifact@v4
         with:
           name: test-result
