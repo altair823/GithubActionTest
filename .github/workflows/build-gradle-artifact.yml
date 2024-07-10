@@ -35,5 +35,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: binchae-be
+          name: ${{ inputs.artifact-name }}
           path: build/libs/${{ inputs.artifact-name }}.jar
