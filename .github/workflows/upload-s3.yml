@@ -34,6 +34,9 @@ jobs:
       - name: Move scripts to artifact directory
         run: mv ./scripts ./artifacts
 
+      - name: Move appspec to artifact directory
+        run: mv ./appspec.yml ./artifacts
+
       - name: Zip artifact and scripts
         run: zip -r ${{ inputs.artifact-name }}.zip ./artifacts
 
