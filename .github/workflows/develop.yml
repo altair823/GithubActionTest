@@ -42,7 +42,7 @@ jobs:
     needs: upload-s3
     uses: ./.github/workflows/deploy.yml
     with:
-      application-name: github-actions-demo
+      application-name: github-action-test
       artifact-name: github-actions-demo
       identifier: ${{ github.run_id }}
     secrets:
