@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.RestController
 class Index {
     @GetMapping("/")
     fun index(): Hello {
-        return Hello("Hello, World!")
+        return Hello("Hello, World!", "0.0.1")
     }
 }
 
 class Hello (
-    val index: String
+    val index: String,
+    val version: String,
 )
